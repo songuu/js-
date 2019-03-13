@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background-color: #000002;
+			}
+			
+			#map {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				z-index: 0;
+				background-color: rgb(243, 241, 236);
+				color: rgb(0, 0, 0);
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="map"></div>
+		<script src="../js/draw.js"></script>
+		<script type="text/javascript">
+			var data = [ {
+				from: {
+					name: '攻击者1',
+					coordinate: [30, 20]
+				},
+				to: {
+					name: '被攻击者2',
+					coordinate: [260, 75]
+				}
+			}, {
+				from: {
+					name: '攻击者2',
+					coordinate: [125, 28]
+				},
+				to: {
+					name: '被攻击者3',
+					coordinate: [32, 51]
+				}
+			}, {
+				from: {
+					name: '攻击者1',
+					coordinate: [30, 20]
+				},
+				to: {
+					name: '被攻击者1',
+					coordinate: [120, 88]
+				}
+			}];
+
+			var moveLine = new MoveLine({
+				//marker点半径
+				markerRadius: 2,
+				//marker点颜色,为空或null则默认取线条颜色
+				markerColor: null,
+				//线条类型 solid、dashed、dotted
+				lineType: 'solid',
+				//线条宽度
+				lineWidth: 1,
+				//线条颜色
+				colors: '#F9815C',
+				//移动点半径
+				moveRadius: 2,
+				//移动点颜色
+				fillColor: '#fff',
+				//移动点阴影颜色
+				shadowColor: '#fff',
+				//移动点阴影大小
+				shadowBlur: 5,
+
+				data: data
+			});
+
+			var options = {
+				//移动点半径
+				moveRadius: 2,
+				//移动点颜色
+				fillColor: '#fff',
+				//移动点阴影颜色
+				shadowColor: '#fff',
+				//移动点阴影大小
+				shadowBlur: 10,
+				//画板长度
+				width: 1536,
+				//画板宽度
+				height: 402,
+			};
+
+			function draw() {
+				moveLine.update(options);
+			}
+
+			draw()
+		</script>
+	</body>
+
+</html>
